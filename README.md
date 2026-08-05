@@ -6,7 +6,9 @@ A pixel-faithful, fully functional rebuild of the [Figma Community "Travel Agenc
 
 ## 🚀 Live Demo
 
-Deployed via Vercel — URL added after deployment.
+**🔗 [jadoo-landing-nine.vercel.app](https://jadoo-landing-nine.vercel.app)** — deployed via Vercel
+
+**Source:** [github.com/xi-kki/jadoo-travel-landing](https://github.com/xi-kki/jadoo-travel-landing)
 
 ## ✨ Features
 
