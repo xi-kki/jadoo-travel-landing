@@ -16,13 +16,19 @@ A pixel-faithful, fully functional rebuild of the [Figma Community "Travel Agenc
 - **Design tokens extracted from Figma** — exact colors, typography, and spacing (Volkhov, Poppins, Open Sans; navy `#181E4B`, accent `#DF6951`, gold `#F1A501`)
 - **13 real assets exported from Figma** — hero illustration, destination photos, logos, avatars
 - **Fully functional interactions:**
-  - Sticky navbar with scroll effect + mobile hamburger menu
+  - Sticky navbar with scroll effect + mobile hamburger menu; nav links wired to real section anchors
+  - Hero CTAs (`Explore trips`, `See how it works`) scroll to destinations / booking steps
+  - Destination cards clickable; prices corrected to real-formatted values
+  - Trip-inquiry form (destination, dates, travelers, email) with validation + success state
+  - Favorite toggle on the trip card (ARIA pressed state)
   - Working testimonial carousel (arrows, dots, autoplay, keyboard accessible)
   - Subscribe form with email validation, error + success states
+  - Footer, social, and app-store links centralized in `lib/site.ts` (swap in real profile/store URLs)
   - Scroll-reveal animations (framer-motion), floating cards, flying-plane decoration
+- **Real copy** — lorem ipsum replaced with benefit-driven copywriting (copywriting skill pass)
 - **Fully responsive** — mobile, tablet, desktop
 - **Accessible** — semantic HTML, ARIA labels, keyboard navigation, focus states
-- **Optimized** — self-hosted Google Fonts (`next/font`), 140 kB first-load JS
+- **Optimized** — self-hosted Google Fonts (`next/font`), 141 kB first-load JS
 
 ## 🛠️ Tech Stack
 
