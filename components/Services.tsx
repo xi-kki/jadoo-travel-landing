@@ -7,25 +7,25 @@ const services = [
   {
     icon: Plane,
     title: "Best Flights",
-    desc: "Engrossed listening. Park gate sell they west hard for the.",
+    desc: "Compare fares across 500+ airlines and pay the price you see — no surprise fees at checkout.",
     active: true,
   },
   {
     icon: CloudSun,
     title: "Calculated Weather",
-    desc: "Built Wicket longer admire do barton vanity itself do in it.",
+    desc: "Check the forecast before you lock in dates, so you never pay for a week of rain.",
     active: false,
   },
   {
     icon: PartyPopper,
     title: "Local Events",
-    desc: "Barton vanity itself do in it. Preferd to men it engrossed listening.",
+    desc: "Arrive during festival season, not quiet season. We flag what's on before you book.",
     active: false,
   },
   {
     icon: Palette,
     title: "Customization",
-    desc: "We deliver outsourced aviation services for military customers.",
+    desc: "Tell us your dates and budget — we'll build the itinerary around you, flights and hotels included.",
     active: false,
   },
 ];

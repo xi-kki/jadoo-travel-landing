@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown, Plane } from "lucide-react";
+import { Menu, X, Plane } from "lucide-react";
 import { motion } from "framer-motion";
 
 const links = [
-  { label: "Bookings", href: "#" },
-  { label: "Flights", href: "#" },
-  { label: "Hotels", href: "#" },
+  { label: "Bookings", href: "#book" },
+  { label: "Flights", href: "#services" },
+  { label: "Hotels", href: "#destinations" },
   { label: "Destinations", href: "#destinations" },
 ];
 
@@ -61,25 +61,11 @@ export default function Navbar() {
         {/* Desktop actions */}
         <div className="hidden lg:flex items-center gap-7">
           <a
-            href="#"
-            className="text-[17px] font-medium text-navy-600 hover:text-accent transition-colors"
+            href="#book"
+            className="bg-cta-gradient text-white font-semibold text-[17px] px-8 py-3 rounded-[10px] shadow-btn hover:brightness-105 hover:-translate-y-0.5 transition-all duration-300"
           >
-            Login
+            Plan a trip
           </a>
-          <a
-            href="#"
-            className="text-[17px] font-medium text-navy-600 px-6 py-2.5 border-2 border-navy-600 rounded-full hover:border-accent hover:text-accent transition-colors"
-          >
-            Sign up
-          </a>
-          <button
-            type="button"
-            className="flex items-center gap-1.5 text-[17px] font-medium text-navy-600 hover:text-accent transition-colors"
-            aria-label="Language selector, currently English"
-          >
-            EN
-            <ChevronDown className="w-4 h-4" aria-hidden />
-          </button>
         </div>
 
         {/* Mobile toggle */}
@@ -113,15 +99,13 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <div className="flex items-center gap-6 pt-2 border-t border-gray-100">
-              <a href="#" className="text-lg font-medium text-navy-600">
-                Login
-              </a>
+            <div className="pt-2 border-t border-gray-100">
               <a
-                href="#"
-                className="text-base font-medium text-navy-600 px-5 py-2 border-2 border-navy-600 rounded-full"
+                href="#book"
+                onClick={() => setOpen(false)}
+                className="inline-block bg-cta-gradient text-white font-semibold text-base px-6 py-2.5 rounded-[10px] shadow-btn"
               >
-                Sign up
+                Plan a trip
               </a>
             </div>
           </div>

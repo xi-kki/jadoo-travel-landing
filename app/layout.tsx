@@ -26,11 +26,11 @@ const openSans = Open_Sans({
 export const metadata: Metadata = {
   title: "Jadoo — Travel, enjoy and live a new and full life",
   description:
-    "Best destinations around the world. Book your trip in minutes with Jadoo — flights, hotels, and curated travel experiences.",
+    "Book flights, hotels and hand-picked trips with Jadoo. One clear price, no hidden fees — your itinerary planned within 24 hours.",
   openGraph: {
-    title: "Jadoo — Travel Agency",
+    title: "Jadoo — Travel, enjoy and live a new and full life",
     description:
-      "Travel, enjoy and live a new and full life. Best destinations around the world.",
+      "Flights, hotels and hand-picked trips. Booked in minutes, planned for life.",
     type: "website",
   },
 };

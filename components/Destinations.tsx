@@ -9,21 +9,21 @@ const destinations = [
     img: "/assets/dest-rome.png",
     title: "Rome, Italy",
     trip: "10 Days Trip",
-    price: "$5,42k",
+    price: "$5,420",
     rating: 4.8,
   },
   {
     img: "/assets/dest-london.png",
     title: "London, UK",
     trip: "12 Days Trip",
-    price: "$4.2k",
+    price: "$4,200",
     rating: 4.9,
   },
   {
     img: "/assets/dest-europe.png",
     title: "Full Europe",
     trip: "28 Days Trip",
-    price: "$15k",
+    price: "$15,000",
     rating: 5.0,
   },
 ];
@@ -51,13 +51,15 @@ export default function Destinations() {
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-[1000px] mx-auto">
           {destinations.map((dest, i) => (
-            <motion.article
+            <motion.a
               key={dest.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.55, delay: i * 0.12 }}
               className="group bg-white rounded-[26px] shadow-[0_10px_30px_rgba(47,45,91,0.08)] hover:shadow-[0_25px_60px_rgba(47,45,91,0.15)] hover:-translate-y-2 transition-all duration-300 overflow-hidden"
+              href="#book"
+              aria-label={`Book a trip to ${dest.title}`}
             >
               <div className="relative h-[330px] overflow-hidden">
                 <Image
@@ -95,7 +97,7 @@ export default function Destinations() {
                   </p>
                 </div>
               </div>
-            </motion.article>
+            </motion.a>
           ))}
         </div>
       </div>

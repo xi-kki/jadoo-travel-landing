@@ -63,8 +63,7 @@ export default function Subscribe() {
           </div>
 
           <h2 className="font-display font-bold text-navy-900 text-[28px] lg:text-[33px] leading-[1.5] max-w-[700px] mx-auto text-balance mb-12">
-            Subscribe to get information, latest news and other interesting
-            offers about Jadoo
+            Get flight deals and trip ideas — one email a week, never spam.
           </h2>
 
           {/* Form */}
@@ -80,7 +79,7 @@ export default function Subscribe() {
                   role="status"
                 >
                   <CheckCircle2 className="w-6 h-6 shrink-0" aria-hidden />
-                  Subscribed! Welcome to the Jadoo newsletter. 🎉
+                  You're on the list. Your first deal lands this Friday.
                 </motion.div>
               ) : (
                 <motion.form
@@ -117,7 +116,7 @@ export default function Subscribe() {
                       type="submit"
                       className="bg-cta-gradient text-white font-semibold text-[17px] px-8 py-[18px] rounded-[10px] shadow-btn hover:brightness-105 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap"
                     >
-                      Subscribe
+                      Get deals
                     </button>
                   </div>
                   {status === "error" && (

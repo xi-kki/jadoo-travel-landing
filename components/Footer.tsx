@@ -2,26 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Twitter, Plane, Apple, Play } from "lucide-react";
+import { SITE } from "@/lib/site";
 
-const columns = [
-  {
-    title: "Company",
-    links: ["About", "Careers", "Mobile"],
-  },
-  {
-    title: "Contact",
-    links: ["Help/FAQ", "Press", "Affilates"],
-  },
-  {
-    title: "More",
-    links: ["Airlinefees", "Airline", "Low fare tips"],
-  },
-];
+const columns = SITE.footerColumns;
 
 const socials = [
-  { icon: Facebook, label: "Facebook" },
-  { icon: Instagram, label: "Instagram" },
-  { icon: Twitter, label: "Twitter" },
+  { icon: Facebook, label: "Facebook", href: SITE.socials.facebook },
+  { icon: Instagram, label: "Instagram", href: SITE.socials.instagram },
+  { icon: Twitter, label: "Twitter", href: SITE.socials.x },
 ];
 
 export default function Footer() {
@@ -47,7 +35,8 @@ export default function Footer() {
             </span>
           </a>
           <p className="text-[13px] leading-[1.8] text-body max-w-[230px]">
-            Book your trip in minute, get full Control for much longer.
+            Flights, hotels and trips you can actually afford — booked in
+            minutes, planned for life.
           </p>
         </div>
 
@@ -59,12 +48,12 @@ export default function Footer() {
             </h3>
             <ul className="space-y-4">
               {col.links.map((link) => (
-                <li key={link}>
+                <li key={link.label}>
                   <a
-                    href="#"
+                    href={link.href}
                     className="text-[18px] text-body hover:text-accent transition-colors"
                   >
-                    {link}
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -76,10 +65,10 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-[21px] text-navy-900 mb-7">Social</h3>
           <div className="flex items-center gap-4 mb-7">
-            {socials.map(({ icon: Icon, label }) => (
+            {socials.map(({ icon: Icon, label, href }) => (
               <a
                 key={label}
-                href="#"
+                href={href}
                 aria-label={label}
                 className="w-11 h-11 rounded-full bg-white shadow-[0_5px_20px_rgba(47,45,91,0.1)] flex items-center justify-center text-body hover:text-accent hover:-translate-y-0.5 transition-all"
               >
@@ -92,7 +81,7 @@ export default function Footer() {
           </p>
           <div className="flex flex-wrap gap-3">
             <a
-              href="#"
+              href={SITE.playStore}
               className="flex items-center gap-2 bg-navy-900 text-white rounded-[12px] px-5 py-2.5 hover:bg-navy-800 transition-colors"
               aria-label="Download on Google Play"
             >
@@ -107,7 +96,7 @@ export default function Footer() {
               </span>
             </a>
             <a
-              href="#"
+              href={SITE.appStore}
               className="flex items-center gap-2 bg-navy-900 text-white rounded-[12px] px-5 py-2.5 hover:bg-navy-800 transition-colors"
               aria-label="Download on the App Store"
             >
@@ -126,7 +115,7 @@ export default function Footer() {
       </motion.div>
 
       <p className="text-center text-[14px] text-body mt-16">
-        All rights reserved@jadoo.co
+        © {new Date().getFullYear()} Jadoo Travel. All rights reserved.
       </p>
     </footer>
   );

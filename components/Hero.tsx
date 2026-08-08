@@ -79,9 +79,9 @@ export default function Hero() {
             variants={fadeUp}
             className="text-[16px] sm:text-[17px] leading-[1.9] text-body max-w-[470px] mb-10"
           >
-            Built Wicket longer admire do barton vanity itself do in it.
-            Preferred to sportsmen it engrossed listening. Park gate sell they
-            west hard for the.
+            Flights, hotels and hand-picked trips — booked in minutes, not
+            weekends. One clear price, no hidden fees, and a real person to
+            call when plans change.
           </motion.p>
 
           <motion.div
@@ -95,12 +95,12 @@ export default function Hero() {
               href="#destinations"
               className="bg-cta-gradient text-white font-semibold text-[18px] px-9 py-4.5 py-[18px] rounded-[10px] shadow-btn hover:shadow-btnYellow hover:brightness-105 hover:-translate-y-0.5 transition-all duration-300"
             >
-              Find out more
+              Explore trips
             </a>
-            <button
-              type="button"
+            <a
+              href="#book"
               className="group flex items-center gap-4 text-[17px] font-medium text-navy-600 hover:text-accent transition-colors"
-              aria-label="Play demo video"
+              aria-label="See how booking works"
             >
               <span className="w-[52px] h-[52px] rounded-full bg-white shadow-[0_10px_30px_rgba(47,45,91,0.12)] flex items-center justify-center group-hover:scale-110 transition-transform">
                 <svg
@@ -113,8 +113,8 @@ export default function Hero() {
                   <path d="M2.5 1.5L12.5 7.5L2.5 13.5V1.5Z" fill="#DF6951" />
                 </svg>
               </span>
-              Play Demo
-            </button>
+              See how it works
+            </a>
           </motion.div>
         </div>
 

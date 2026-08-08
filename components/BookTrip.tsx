@@ -1,28 +1,55 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Wallet, CalendarCheck, Heart, Leaf, Send, Building2 } from "lucide-react";
+import { MapPin, Wallet, CalendarCheck, Heart, Leaf, Send, Building2, CheckCircle2, AlertCircle } from "lucide-react";
 
 const steps = [
   {
     icon: MapPin,
     title: "Choose Destination",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.",
+    desc: "Pick where you're going — or tell us your dates and budget, and we'll suggest three that fit.",
   },
   {
     icon: Wallet,
     title: "Make Payment",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.",
+    desc: "Secure checkout in under two minutes. Card, bank transfer, or split it with friends.",
   },
   {
     icon: CalendarCheck,
     title: "Reach Airport on Selected Date",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Urna, tortor tempus.",
+    desc: "Your full itinerary lands in your inbox the moment you book. Just show up — we handle the rest.",
   },
 ];
 
 export default function BookTrip() {
+  const [faved, setFaved] = useState(false);
+  const [form, setForm] = useState({ destination: "Rome, Italy", dates: "", travelers: "2", email: "" });
+  const [formStatus, setFormStatus] = useState<"idle" | "success" | "error">("idle");
+  const [formError, setFormError] = useState("");
+
+  const handleInquiry = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.email.trim()) {
+      setFormError("Please enter your email so we can send the itinerary.");
+      setFormStatus("error");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email.trim())) {
+      setFormError("Please enter a valid email address.");
+      setFormStatus("error");
+      return;
+    }
+    if (!form.dates.trim()) {
+      setFormError("Tell us roughly when you'd like to travel.");
+      setFormStatus("error");
+      return;
+    }
+    setFormError("");
+    setFormStatus("success");
+    setForm({ destination: "Rome, Italy", dates: "", travelers: "2", email: "" });
+  };
   return (
     <section id="book" className="relative py-24 lg:py-32" aria-label="How to book a trip">
       {/* Background deco */}
@@ -137,10 +164,12 @@ export default function BookTrip() {
                 </div>
                 <button
                   type="button"
-                  aria-label="Add to favorites"
-                  className="text-muted hover:text-accent transition-colors"
+                  onClick={() => setFaved(!faved)}
+                  aria-label={faved ? "Remove from favorites" : "Add to favorites"}
+                  aria-pressed={faved}
+                  className={`transition-colors ${faved ? "text-accent" : "text-muted hover:text-accent"}`}
                 >
-                  <Heart className="w-6 h-6" aria-hidden />
+                  <Heart className="w-6 h-6" aria-hidden fill={faved ? "currentColor" : "none"} />
                 </button>
               </div>
             </div>
@@ -180,6 +209,115 @@ export default function BookTrip() {
           </motion.div>
         </motion.div>
       </div>
+        {/* Trip inquiry form */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="max-w-[760px] mx-auto mt-20 bg-white rounded-[40px] shadow-card p-8 lg:p-12"
+        >
+          <h3 className="font-display font-bold text-navy-900 text-[26px] lg:text-[30px] text-center mb-2">
+            Get your itinerary planned
+          </h3>
+          <p className="text-center text-body text-[16px] mb-8">
+            Tell us where and when — a real travel planner replies within 24
+            hours. No payment needed to ask.
+          </p>
+
+          {formStatus === "success" ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-green-50 border border-green-200 text-green-700 rounded-[16px] px-6 py-6 flex items-center justify-center gap-3 font-medium text-center"
+              role="status"
+            >
+              <CheckCircle2 className="w-6 h-6 shrink-0" aria-hidden />
+              Request received. We'll email your itinerary within 24 hours.
+            </motion.div>
+          ) : (
+            <form onSubmit={handleInquiry} noValidate className="grid sm:grid-cols-2 gap-4">
+              <div className="sm:col-span-1">
+                <label htmlFor="inquiry-destination" className="block text-[14px] font-medium text-navy-800 mb-1.5">
+                  Destination
+                </label>
+                <select
+                  id="inquiry-destination"
+                  value={form.destination}
+                  onChange={(e) => setForm({ ...form, destination: e.target.value })}
+                  className="w-full rounded-[10px] bg-white px-5 py-[14px] text-[15px] text-navy-800 outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-accent transition-shadow"
+                >
+                  <option>Rome, Italy</option>
+                  <option>London, UK</option>
+                  <option>Full Europe</option>
+                  <option>Somewhere else</option>
+                </select>
+              </div>
+              <div className="sm:col-span-1">
+                <label htmlFor="inquiry-travelers" className="block text-[14px] font-medium text-navy-800 mb-1.5">
+                  Travelers
+                </label>
+                <select
+                  id="inquiry-travelers"
+                  value={form.travelers}
+                  onChange={(e) => setForm({ ...form, travelers: e.target.value })}
+                  className="w-full rounded-[10px] bg-white px-5 py-[14px] text-[15px] text-navy-800 outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-accent transition-shadow"
+                >
+                  {["1", "2", "3", "4", "5", "6", "7", "8+"].map((n) => (
+                    <option key={n}>{n}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="sm:col-span-1">
+                <label htmlFor="inquiry-dates" className="block text-[14px] font-medium text-navy-800 mb-1.5">
+                  When are you traveling?
+                </label>
+                <input
+                  id="inquiry-dates"
+                  type="text"
+                  placeholder="e.g. June 2026"
+                  value={form.dates}
+                  onChange={(e) => setForm({ ...form, dates: e.target.value })}
+                  className="w-full rounded-[10px] bg-white px-5 py-[14px] text-[15px] text-navy-800 placeholder:text-[#9CA0B0] outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-accent transition-shadow"
+                />
+              </div>
+              <div className="sm:col-span-1">
+                <label htmlFor="inquiry-email" className="block text-[14px] font-medium text-navy-800 mb-1.5">
+                  Email
+                </label>
+                <input
+                  id="inquiry-email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder="you@example.com"
+                  value={form.email}
+                  onChange={(e) => {
+                    setForm({ ...form, email: e.target.value });
+                    if (formStatus === "error") {
+                      setFormStatus("idle");
+                      setFormError("");
+                    }
+                  }}
+                  className="w-full rounded-[10px] bg-white px-5 py-[14px] text-[15px] text-navy-800 placeholder:text-[#9CA0B0] outline-none ring-1 ring-gray-200 focus:ring-2 focus:ring-accent transition-shadow"
+                />
+              </div>
+              <div className="sm:col-span-2 flex flex-col sm:flex-row items-center gap-4 mt-2">
+                <button
+                  type="submit"
+                  className="bg-cta-gradient text-white font-semibold text-[17px] px-9 py-[16px] rounded-[10px] shadow-btn hover:brightness-105 hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  Request my itinerary
+                </button>
+                {formStatus === "error" && (
+                  <p className="flex items-center gap-1.5 text-red-500 text-sm font-medium" role="alert">
+                    <AlertCircle className="w-4 h-4" aria-hidden />
+                    {formError}
+                  </p>
+                )}
+              </div>
+            </form>
+          )}
+        </motion.div>
     </section>
   );
 }

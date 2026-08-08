@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
@@ -8,18 +7,16 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 const testimonials = [
   {
     quote:
-      "On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.",
+      "I've booked through six agencies in four years. Jadoo is the first where the final price matched the quote — and the first that picked up the phone on the second ring. Bali sorted in 20 minutes.",
     name: "Chris Thomas",
     role: "CEO of Red Button",
-    avatar: "/assets/avatar-1.png",
     color: "bg-accent",
   },
   {
     quote:
-      "On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.",
+      "My flight got cancelled two days before departure. Jadoo rebooked everything — new flights, new hotel, same budget — while I was still on hold with the airline. They just handled it.",
     name: "Mike Taylor",
     role: "Lahore, Pakistan",
-    avatar: "/assets/avatar-1.png",
     color: "bg-blueDeco",
   },
   {
@@ -27,7 +24,6 @@ const testimonials = [
       "Jadoo made booking our honeymoon effortless — from flights to hotels, everything was perfectly planned. Highly recommended for every traveler.",
     name: "Sarah Mitchell",
     role: "Travel Blogger",
-    avatar: "/assets/avatar-1.png",
     color: "bg-yellow",
   },
 ];
@@ -142,14 +138,11 @@ export default function Testimonials() {
                   “{t.quote}”
                 </blockquote>
                 <figcaption className="flex items-center gap-5">
-                  <div className={`w-[68px] h-[68px] rounded-full ${t.color} p-1.5`}>
-                    <Image
-                      src={t.avatar}
-                      alt={t.name}
-                      width={68}
-                      height={68}
-                      className="rounded-full object-cover w-full h-full"
-                    />
+                  <div
+                    className={`w-[68px] h-[68px] rounded-full ${t.color} text-white flex items-center justify-center text-[22px] font-bold shrink-0`}
+                    aria-hidden
+                  >
+                    {t.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
                   </div>
                   <div>
                     <p className="font-semibold text-[18px] text-navy-800">
